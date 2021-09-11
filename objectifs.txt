@@ -1,6 +1,8 @@
 page index => boutton inscription et connexion
 
-page inscription => formulaire 1 pour ajouter un utilisateur + envoi bdd et renvoie sur connexion
+page inscription => formulaire 1 pour ajouter un utilisateur > addUserData
+
+page addUserData => envoi bdd et > sur connexion
 
 page 404 => si post empty
 
