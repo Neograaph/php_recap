@@ -1,9 +1,11 @@
 <?php
-include('./views/layout/head.php');
+include('./layout/head.php');
 ?>
 <section>
-  
+  <?php
+  include('./layout/formAddUser.php');
+  ?>
 </section>
 <?php
-include('./views/layout/footer.php');
+include('./layout/footer.php');
 ?>
