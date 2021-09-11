@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_POST['pseudo']) && isset($_POST['mdp'])){
   $pseudo = strip_tags($_POST['pseudo'],"<br/>");
   $mdp = strip_tags($_POST['mdp'],"<br/>");
@@ -14,10 +15,20 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp'])){
       die('Erreur : ' . $e->getMessage());
     }
     
-    $req = $bdd->query("SELECT pseudo,mdp FROM users WHERE pseudo=\'neograph\'");
+    $req=$bdd->prepare("SELECT pseudo,mdp FROM users WHERE pseudo= ?");
+    $req->execute(array($pseudo));
 
     foreach ($req as $data){
       echo $data['pseudo'].' '.$data['mdp'].'<br/>';  
+    }
+
+    $goodPassword=$data['mdp'];
+    if ($goodPassword==$mdp){
+      $_SESSION['pseudo'] = $pseudo;
+      header('location:profil.php');
+    }
+    else{
+      header('location:errorData.php');
     }
 
     // $req->closeCursor();

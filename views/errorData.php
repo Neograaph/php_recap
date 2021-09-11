@@ -1,9 +1,12 @@
 <?php
-include('./views/layout/head.php');
+include('./layout/head.php');
 ?>
-<section>
-  
+<section class='d-flex flex-column align-items-center mt-5'>
+  <p>Données incorrectes</p>
+  <a href="./connexion.php">
+    <button class='btn btn-danger'>Réessayer</button>
+  </a>
 </section>
 <?php
-include('./views/layout/footer.php');
+include('./layout/footer.php');
 ?>
