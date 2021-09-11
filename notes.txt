@@ -1,0 +1,50 @@
+<?php
+echo $_POST['nom'];
+try {
+  $bdd = new PDO('mysql:host=localhost;dbname=viabet;charset=utf8', 'root', '');
+  echo "connexion à la base de données réussie";
+}
+catch (Exception $e) {
+  die('Erreur : ' . $e->getMessage());
+}
+$req=$bdd->prepare('SELECT*FROM jeux_video WHERE nom = ?');
+$req->execute(array($_POST['nom']));
+
+foreach($req as $data){
+  echo $data['nom'].' coute '. $data['prix']. ' €<br/>';
+  echo 'Commentaires : '.$data['commentaires'];
+
+}
+if (isset($_POST['nom'])){
+    $nom = $_POST['nom'];
+}
+else{
+  echo 'no data';
+}
+
+if (!empty($nom) echo $nom;
+};
+
+?>
+
+$(function (){
+  $('#nom').on('change', function() {
+    console.log(this.value);
+    
+    let formUrl = $(this).attr('action');
+    let formMethod = $(this).attr('method');
+    let formData = $(this).serialize();
+    
+    sendName();
+    function sendName (){
+      $.ajax({
+        type: formMethod,
+        url: formUrl,
+        data: formData,
+      }).done(function(response){
+        // console.log(response);
+        $('#myForm').submit();
+      });
+    }
+  });
+});
