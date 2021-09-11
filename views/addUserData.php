@@ -35,6 +35,7 @@ $req->execute(array(
   'created_at' => $dateNow
 ));
 echo 'utilisateur ajouté à la bdd';
+$req->closeCursor();
 
 header('location:connexion.php');
 ?>

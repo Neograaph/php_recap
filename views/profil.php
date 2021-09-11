@@ -1,9 +1,9 @@
 <?php
-include('./views/layout/head.php');
+include('./layout/head.php');
 ?>
 <section>
-  
+  <h1>Mon profil</h1>
 </section>
 <?php
-include('./views/layout/footer.php');
+include('./layout/footer.php');
 ?>
