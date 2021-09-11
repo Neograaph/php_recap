@@ -6,6 +6,6 @@
     <input class='form-control' name='pseudo' placeholder='pseudo' type="text" required autofocus autocomplete='off'>
     <input class='form-control' name='email' placeholder='email' type="email" required>
     <input class='form-control' name='mdp' placeholder='password' type="password" required>
-    <input class='btn btn-success' type="submit">
+    <input class='btn btn-success' type="submit" value='Inscription'>
   </form>
 </div>

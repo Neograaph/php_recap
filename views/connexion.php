@@ -2,7 +2,9 @@
 include('./layout/head.php');
 ?>
 <section>
-  
+  <?php
+  include('./layout/formConnexion.php');
+  ?>
 </section>
 <?php
 include('./layout/footer.php');

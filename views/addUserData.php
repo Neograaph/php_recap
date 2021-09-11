@@ -36,4 +36,5 @@ $req->execute(array(
 ));
 echo 'utilisateur ajouté à la bdd';
 
+header('location:connexion.php');
 ?>
