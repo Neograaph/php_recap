@@ -17,10 +17,10 @@ if (isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['mdp'])){
   // $response->closeCursor();
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "php_form";
+$servername = "maximefneograph.mysql.db";
+$username = "maximefneograph";
+$password = "6WtuCxrP7ygy";
+$dbname = "php_recap";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -33,9 +33,9 @@ try {
   // echo "New record created successfully";
   header('location:connexion.php');
 } catch(PDOException $e) {
-  // echo $sql . "<br>" . $e->getMessage();
-  echo $e->getMessage();
-  header('location:errorAddData.php');
+  echo $sql . "<br>" . $e->getMessage();
+  // echo $e->getMessage();
+  // header('location:errorAddData.php');
 }
 
 $conn = null;
