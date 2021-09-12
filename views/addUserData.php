@@ -5,11 +5,11 @@ if (isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['mdp'])){
   $mdp = strip_tags($_POST['mdp'],"<br/>");
   
   if ((!empty($pseudo)) && (!empty($email)) && (!empty($mdp))){
-    echo $pseudo.'<br/>';
-    echo $email.'<br/>';
-    echo $mdp.'<br/>';
+    // echo $pseudo.'<br/>';
+    // echo $email.'<br/>';
+    // echo $mdp.'<br/>';
     $dateNow = date('y-m-d');
-    echo $dateNow.'<br/>';
+    // echo $dateNow.'<br/>';
   }
   else{
     echo 'no post var';
@@ -17,25 +17,26 @@ if (isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['mdp'])){
   // $response->closeCursor();
 }
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "php_form";
 
 try {
-  $bdd = new PDO('mysql:host=localhost;dbname=php_form;charset=utf8', 'root', '');
-  echo "connexion à la base de données réussie <br/>";
-}
-catch (Exception $e) {
-  die('Erreur : ' . $e->getMessage());
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $sql = "INSERT INTO users (pseudo, email, mdp, created_at)
+  VALUES ('$pseudo', '$email', '$mdp', '$dateNow')";
+  // use exec() because no results are returned
+  $conn->exec($sql);
+  // echo "New record created successfully";
+  header('location:connexion.php');
+} catch(PDOException $e) {
+  // echo $sql . "<br>" . $e->getMessage();
+  echo $e->getMessage();
+  header('location:errorAddData.php');
 }
 
-$req = $bdd->prepare("INSERT INTO users(id, pseudo, email, mdp, created_at) VALUES(:id, :pseudo, :email, :mdp, :created_at)");
-$req->execute(array(
-  'id' => '',
-  'pseudo' => $pseudo,
-  'email' => $email,
-  'mdp' => $mdp,
-  'created_at' => $dateNow
-));
-echo 'utilisateur ajouté à la bdd';
-$req->closeCursor();
-
-header('location:connexion.php');
+$conn = null;
 ?>
