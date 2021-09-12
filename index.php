@@ -16,5 +16,5 @@ include('./views/layout/head.php');
   </div>
 </section>
 <?php
-include('./views/layout/footer.php');
+include('./views/layout/footerIndex.php');
 ?>
