@@ -1,0 +1,17 @@
+=>
+
+$servername = "maximefneograph.mysql.db";
+$username = "maximefneograph";
+$password = "6WtuCxrP7ygy";
+$dbname = "php_recap";
+
+SQLSTATE[HY000] [1044] Access denied for user 'maximefneograph'@'%' to database 'php_recap'
+
+=>
+
+$servername = "maximefneograph.mysql.db";
+$username = "1681-2379-24/Neograph";
+$password = "2s$eFaEEY&Yc";
+$dbname = "php_recap";
+
+SQLSTATE[HY000] [1045] Access denied for user '1681-2379-24/Neograph'@'10.8.109.38' (using password: YES)

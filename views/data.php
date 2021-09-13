@@ -7,15 +7,23 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp'])){
   if ((!empty($pseudo)) && (!empty($mdp))){
     echo $pseudo.'<br/>';
     echo $mdp.'<br/>';
+
+    $servername = "maximefneograph.mysql.db";
+    $username = "maximefneograph";
+    $password = "6WtuCxrP7ygy";
+    $dbname = "maximefneograph";
+    
     try {
-      $bdd = new PDO('mysql:host=localhost;dbname=php_form;charset=utf8', 'root', '');
+      $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
       echo "connexion à la base de données réussie <br/>";
     }
-    catch (Exception $e) {
+    catch (PDOException $e) {
       die('Erreur : ' . $e->getMessage());
     }
     
-    $req=$bdd->prepare("SELECT pseudo,mdp FROM users WHERE pseudo= ?");
+    $req=$bdd->prepare("SELECT pseudo,mdp FROM php_recap WHERE pseudo= ?");
     $req->execute(array($pseudo));
 
     foreach ($req as $data){

@@ -20,23 +20,33 @@ if (isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['mdp'])){
 $servername = "maximefneograph.mysql.db";
 $username = "maximefneograph";
 $password = "6WtuCxrP7ygy";
-$dbname = "php_recap";
+$dbname = "maximefneograph";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   // set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $sql = "INSERT INTO users (pseudo, email, mdp, created_at)
-  VALUES ('$pseudo', '$email', '$mdp', '$dateNow')";
+  $sql = "INSERT INTO php_recap (pseudo, email, mdp, created_at) VALUES ('$pseudo', '$email', '$mdp', '$dateNow')";
   // use exec() because no results are returned
   $conn->exec($sql);
   // echo "New record created successfully";
-  header('location:connexion.php');
-} catch(PDOException $e) {
-  echo $sql . "<br>" . $e->getMessage();
-  // echo $e->getMessage();
-  // header('location:errorAddData.php');
-}
 
+  // ou  avec requête préparé
+  // $req =$bdd->prepare('INSERT INTO php_recap (pseudo, email, mdp, created_at)
+  // VALUES (:pseu, :email, :pass, :dte)');
+  // $req->execute(array(
+    // 'pseu' => $pseudo,
+    // 'email' => $email,
+    // 'pass' => $mdp,
+    // 'dte' => $dateNow,
+    // ));
+  } 
+  catch(PDOException $e) {
+  echo $req . "<br>" . $e->getMessage();
+  // echo $e->getMessage();
+}
 $conn = null;
+
+header('location:connexion.php');
+// header('location:errorAddData.php');
 ?>

@@ -7,14 +7,20 @@ include('./layout/head.php');
   <h1 class='text-center'>Mon profil</h1>
   <p class='p-2'>
     <?php
+  $servername = "maximefneograph.mysql.db";
+  $username = "maximefneograph";
+  $password = "6WtuCxrP7ygy";
+  $dbname = "maximefneograph";
+  
   try {
-    $bdd = new PDO('mysql:host=localhost;dbname=php_form;charset=utf8', 'root', '');
-    // echo "connexion à la base de données réussie <br/>";
+    $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
   }
   catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
   } 
-  $req=$bdd->prepare("SELECT*FROM users WHERE pseudo= ? ");
+  $req=$bdd->prepare("SELECT*FROM php_recap WHERE pseudo= ? ");
   $req->execute(array ($pseudo)); 
   foreach ($req as $data){
     echo 'Id du compte : '.$data['id'].'<br/>';
