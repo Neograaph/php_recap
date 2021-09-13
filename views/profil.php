@@ -31,6 +31,9 @@ include('./layout/head.php');
   }
   ?>
   </p>
+  <a href="./modifier.php" class='p-2'>
+    <button class='btn btn-primary'>Modifier mes infos</button>
+  </a>
   <a href="./logout.php" class='p-2'>
     <button class='btn btn-danger'>Se déconnecter</button>
   </a>
