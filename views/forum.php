@@ -45,7 +45,7 @@ include('./layout/navPrivate.php');
           echo '<td>' . $donnees['id']. '</td>';
           echo '<td>' . $donnees['title']. '</td>';
           echo '<td>' . $donnees['created_at']. '</td>';
-          echo '<td>' . "<a class='btn btn-success text-end' v-on:click='join(".$donnees['title'].' ,'.$donnees['id'].")'>JOIN</a>". '</td>';
+          echo '<td class="text-end">' . "<a class='btn btn-success' v-on:click='join(".$donnees['title'].' ,'.$donnees['id'].")'>JOIN</a>". '</td>';
           echo '</tr>';
         }
 
@@ -53,33 +53,33 @@ include('./layout/navPrivate.php');
     </tbody>
   </table>
   <div v-show="!menuShow">
-    <a v-on:click='backToMenu()' class='btn btn-danger'>Retour</a>
-    <a @click='reply()' class='btn btn-primary'>Répondre</a>
     <?php
     $req=$bdd->prepare("SELECT * FROM php_recap_post");
     $req->execute();
     foreach ($req as $donnees) {
       echo '<div class="card">';
       echo '<div class="card-header">';
-      echo '{{ "#"+salonJoinId }}';
+      echo '{{ "Salon #"+salonJoinId }}';
       echo '</div>';
       echo '<div class="card-body">';
-      echo '<h5 class="card-title">'.$donnees['user_id'].'</h5>';
+      echo '<h5 class="card-title">Id utilisateur : '.$donnees['user_id'].'</h5>';
       echo '<p class="card-text">'.$donnees['message'].'</p><br/>';
-      echo '<p class="card-text">'.$donnees['created_at'].'</p>';
+      echo '<p class="card-text">Date du message: '.$donnees['created_at'].'</p>';
       echo '</div>';
-      echo '</div>';
+      echo '</div><br/><br/><br/>';
     }
     ?>
+    <a v-on:click='backToMenu()' class='btn btn-danger'>Retour</a>
+    <a @click='reply()' class='btn btn-primary'>Répondre</a>
   </div>
   <!-- formulaire pour répondre-->
   <div v-show="formReplyShow">
     <div class='d-flex align-items-center flex-column m-3'>
       <div>
-        <h2>Envoyer un message</h2>
+        <h2 id='replyAnch'>Envoyer un message</h2>
       </div>
-      <textarea rows="4" cols="50" form="usrform" placeholder='Votre message...'></textarea>
-      <form class='d-flex gap-2' id='usrform'>
+      <textarea rows="4" cols="50" form="usrform" name='message' placeholder='Votre message...'></textarea>
+      <form class='d-flex gap-2' id='usrform' action='./forum.php' method='post'>
         <input class='btn btn-success' type="submit" value='Envoyer'>
         <input @click='cancelReply' class='btn btn-danger' type="button" value='Annuler'>
       </form>

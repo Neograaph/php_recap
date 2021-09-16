@@ -17,10 +17,12 @@ Vue.createApp({
     },
     backToMenu () {
       this.menuShow=true;
+      this.formReplyShow=false;
     },
     reply () {
       console.log('reply ');
       this.formReplyShow=true;
+      location.hash = "#replyAnch"
     },
     cancelReply () {
       this.formReplyShow=false;
