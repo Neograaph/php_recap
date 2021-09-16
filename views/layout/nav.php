@@ -3,10 +3,10 @@
   <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
-    <a class="navbar-brand me-2" href="https://mdbgo.com/">
+    <a class="navbar-brand me-2" href="./index.php">
       <img
-        src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png"
-        height="16"
+        src="./public/img/logo.svg"
+        height="45"
         alt=""
         loading="lazy"
         style="margin-top: -1px;"
@@ -31,24 +31,29 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
+          <a class="nav-link" href="#">Accueil</a>
         </li>
       </ul>
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-        <button type="button" class="btn btn-link px-3 me-2">
-          Login
-        </button>
-        <button type="button" class="btn btn-primary me-3">
-          Sign up for free
-        </button>
+        <a type="button" class="btn btn-link px-3 me-2" href='./views/connexion.php'>
+          Se connecter
+        </a>
+        <a type="button" class="btn btn-primary me-3" href='./views/inscription.php'>
+          Inscription
+          </a>
         <a
-          class="btn btn-dark px-3"
-          href="https://github.com/mdbootstrap/mdb-ui-kit"
+          class="btn btn-primary px-3"
+          href="https://github.com/Neograaph/php_recap"
           role="button"
-          ><i class="fab fa-github"></i
-        ></a>
+          target='_blank'
+          ><img 
+          src="./public/img/github.svg" 
+          height="17"
+          alt=""
+          loading="lazy"
+          style="margin-top: -1px;"></a>
       </div>
     </div>
     <!-- Collapsible wrapper -->
