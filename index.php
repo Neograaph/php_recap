@@ -4,8 +4,11 @@ include('./views/layout/head.php');
 <?php
 include('./views/layout/nav.php');
 ?>
+<?php
+include('./views/layout/hero.php');
+?>
 <section>
-  <div class='d-flex flex-column align-items-center'>
+  <!-- <div class='d-flex flex-column align-items-center'>
     <h1>Bienvenue sur le site</h1>
     <p>Vous pouvez vous inscrire ou vous connecter avec les bouttons ci-dessous</p>
   </div>
@@ -16,7 +19,7 @@ include('./views/layout/nav.php');
     <a href="./views/connexion.php">
       <input class='btn btn-success' type='button' value='Connexion'></input>
     </a>
-  </div>
+  </div> -->
 </section>
 <?php
 include('./views/layout/footerIndex.php');
