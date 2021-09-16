@@ -7,7 +7,7 @@ include('./layout/head.php');
 include('./layout/nav.php');
 ?>
 <section>
-  <h1 class='text-center'>Mon profil</h1>
+  <h1 class='text-center m-3'>Mon profil</h1>
   <p class='p-2'>
     <?php
   $servername = "maximefneograph.mysql.db";
