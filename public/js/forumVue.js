@@ -1,21 +1,35 @@
-console.log('VueRunningHere');
-
 Vue.createApp({
   data () {
     return {
       title: 'Bienvenue sur le Forum',
       menuShow: true,
-      
+      salonJoinId: null,
+      formReplyShow: false,
+      dateNow:null,
     }
   },
   methods: {
     join (chan,id) {
-      console.log('join '+chan+' '+id);
-      console.log(this.menuShow);
       this.menuShow=false;
+      this.salonJoinId=id;
+      console.log('salonJoinId '+this.salonJoinId);
+      console.log('chan '+chan);
     },
     backToMenu () {
       this.menuShow=true;
     },
+    reply () {
+      console.log('reply ');
+      this.formReplyShow=true;
+    },
+    cancelReply () {
+      this.formReplyShow=false;
+    },
+    getDateNow () {
+      this.dateNow=Date();
+      console.log(this.dateNow);
+      // return
+    }
+
   }
 }).mount('#app')

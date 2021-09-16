@@ -31,7 +31,7 @@ include('./layout/navPrivate.php');
         <th scope="col">#</th>
         <th scope="col">Salon</th>
         <th scope="col">Création</th>
-        <th scope="col">Rejoindre</th>
+        <th scope="col" class='text-end'>Rejoindre</th>
       </tr>
     </thead>
     <tbody>
@@ -39,38 +39,51 @@ include('./layout/navPrivate.php');
         $req=$bdd->prepare("SELECT * FROM php_recap_chan");
         $req->execute();
 
-
-
         foreach ($req as $donnees) {
+          // ajouter ces données dans un tableau pour les récup en JS
           echo '<tr>';
           echo '<td>' . $donnees['id']. '</td>';
           echo '<td>' . $donnees['title']. '</td>';
           echo '<td>' . $donnees['created_at']. '</td>';
-          echo '<td>' . "<a class='btn btn-success' v-on:click='join(".$donnees['title'].$donnees['id'].")'>JOIN</a>". '</td>';
+          echo '<td>' . "<a class='btn btn-success text-end' v-on:click='join(".$donnees['title'].' ,'.$donnees['id'].")'>JOIN</a>". '</td>';
           echo '</tr>';
         }
+
     ?>
     </tbody>
   </table>
   <div v-show="!menuShow">
     <a v-on:click='backToMenu()' class='btn btn-danger'>Retour</a>
+    <a @click='reply()' class='btn btn-primary'>Répondre</a>
     <?php
     $req=$bdd->prepare("SELECT * FROM php_recap_post");
     $req->execute();
     foreach ($req as $donnees) {
       echo '<div class="card">';
       echo '<div class="card-header">';
-      echo $donnees['chan_id'];
+      echo '{{ "#"+salonJoinId }}';
       echo '</div>';
       echo '<div class="card-body">';
       echo '<h5 class="card-title">'.$donnees['user_id'].'</h5>';
       echo '<p class="card-text">'.$donnees['message'].'</p><br/>';
       echo '<p class="card-text">'.$donnees['created_at'].'</p>';
-      // echo '<a href="#" class="btn btn-primary">Go somewhere</a>';
       echo '</div>';
       echo '</div>';
     }
     ?>
+  </div>
+  <!-- formulaire pour répondre-->
+  <div v-show="formReplyShow">
+    <div class='d-flex align-items-center flex-column m-3'>
+      <div>
+        <h2>Envoyer un message</h2>
+      </div>
+      <textarea rows="4" cols="50" form="usrform" placeholder='Votre message...'></textarea>
+      <form class='d-flex gap-2' id='usrform'>
+        <input class='btn btn-success' type="submit" value='Envoyer'>
+        <input @click='cancelReply' class='btn btn-danger' type="button" value='Annuler'>
+      </form>
+    </div>
   </div>
 
 
@@ -83,7 +96,7 @@ include('./layout/navPrivate.php');
   </a> -->
   <!-- <a href="./logout.php" class='p-2 btn btn-danger'>
     Se déconnecter
-  </a> -->
+  </a> --> 
 </section>
 <?php
 include('./layout/footer.php');
