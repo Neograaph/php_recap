@@ -7,8 +7,8 @@ include('./layout/head.php');
 include('./layout/navPrivate.php');
 ?>
 <section id="app">
-  <h1 class='text-center m-3'>Mon profil</h1>
-
+  <h1 class='text-center m-3'>{{ title }}</h1>
+  
 
 
 
