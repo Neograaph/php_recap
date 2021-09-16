@@ -4,7 +4,7 @@ $pseudo = $_SESSION['pseudo'];
 include('./layout/head.php');
 ?>
 <?php
-include('./layout/nav.php');
+include('./layout/navPrivate.php');
 ?>
 <section>
   <h1 class='text-center m-3'>Mon profil</h1>
