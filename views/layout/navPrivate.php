@@ -48,7 +48,10 @@
         </a>
         <a type="button" class="btn btn-dark me-3" href='../views/profil.php'>
           Profil
-          </a>
+        </a>
+        <a type="button" class="btn btn-danger" href='../views/logout.php'>
+          Se déconnecter
+        </a>
         <a
           class="btn btn-primary px-3"
           href="https://github.com/Neograaph/php_recap"

@@ -37,9 +37,9 @@ include('./layout/navPrivate.php');
   <a href="./modifier.php" class='p-2'>
     <button class='btn btn-primary'>Modifier mes infos</button>
   </a>
-  <a href="./logout.php" class='p-2'>
+  <!-- <a href="./logout.php" class='p-2'>
     <button class='btn btn-danger'>Se déconnecter</button>
-  </a>
+  </a> -->
 </section>
 <?php
 include('./layout/footer.php');
