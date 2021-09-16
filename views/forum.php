@@ -25,30 +25,55 @@ include('./layout/navPrivate.php');
 ?>
 <section id="app">
   <h1 class='text-center m-3'>{{ title }}</h1>
-  <table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Salon</th>
-      <th scope="col">Création</th>
-      <th scope="col">Rejoindre</th>
-    </tr>
-  </thead>
-  <tbody>
+  <table class="table table-striped table-hover" v-show="menuShow">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Salon</th>
+        <th scope="col">Création</th>
+        <th scope="col">Rejoindre</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php
+        $req=$bdd->prepare("SELECT * FROM php_recap_chan");
+        $req->execute();
+        foreach ($req as $donnees) {
+          echo '<tr>';
+          echo '<td>' . $donnees['id']. '</td>';
+          echo '<td>' . $donnees['title']. '</td>';
+          echo '<td>' . $donnees['created_at']. '</td>';
+          echo '<td>' . "<a class='btn btn-success' v-on:click='join(".$donnees['id'].")'>JOIN</a>". '</td>';
+          echo '</tr>';
+        }
+    ?>
+    </tbody>
+  </table>
+  <div>
   <?php
-      $req=$bdd->prepare("SELECT * FROM php_recap_chan");
-      $req->execute();
-      foreach ($req as $donnees) {
-        echo '<tr>';
-        echo '<td>' . $donnees['id']. '</td>';
-        echo '<td>' . $donnees['title']. '</td>';
-        echo '<td>' . $donnees['created_at']. '</td>';
-        echo '<td>' . "<a class='btn btn-danger'>JOIN</a>". '</td>';
-        echo '</tr>';
-      }
-  ?>
-  </tbody>
-</table>
+    $req=$bdd->prepare("SELECT * FROM php_recap_post");
+    $req->execute();
+    foreach ($req as $donnees) {
+      echo '<tr>';
+      echo '<td>' . $donnees['id']. '</td>';
+      echo '<td>' . $donnees['title']. '</td>';
+      echo '<td>' . $donnees['created_at']. '</td>';
+      echo '<td>' . "<a class='btn btn-success' v-on:click='join(".$donnees['id'].")'>JOIN</a>". '</td>';
+      echo '</tr>';
+    }
+    ?>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
 
 
 
