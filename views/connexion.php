@@ -1,6 +1,9 @@
 <?php
 include('./layout/head.php');
 ?>
+<?php
+include('./layout/nav.php');
+?>
 <section>
   <?php
   include('./layout/formConnexion.php');

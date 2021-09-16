@@ -3,6 +3,9 @@ session_start();
 $pseudo = $_SESSION['pseudo'];
 include('./layout/head.php');
 ?>
+<?php
+include('./layout/nav.php');
+?>
 <section>
   <h1 class='text-center'>Mon profil</h1>
   <p class='p-2'>

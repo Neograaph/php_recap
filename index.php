@@ -2,7 +2,7 @@
 include('./views/layout/head.php');
 ?>
 <?php
-include('./views/layout/nav.php');
+include('./views/layout/navIndex.php');
 ?>
 <?php
 include('./views/layout/hero.php');

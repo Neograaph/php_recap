@@ -3,9 +3,9 @@
   <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
-    <a class="navbar-brand me-2" href="../index.php">
+    <a class="navbar-brand me-2" href="./index.php">
       <img
-        src="../public/img/logo.svg"
+        src="./public/img/logo.svg"
         height="45"
         alt=""
         loading="lazy"
@@ -24,7 +24,7 @@
       aria-label="Toggle navigation"
     >
     <img
-        src="../public/img/menu.svg"
+        src="./public/img/menu.svg"
         height="45"
         alt=""
         loading="lazy"
@@ -43,10 +43,10 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-        <a type="button" class="btn btn-link px-3 me-2" href='../views/connexion.php'>
+        <a type="button" class="btn btn-link px-3 me-2" href='./views/connexion.php'>
           Se connecter
         </a>
-        <a type="button" class="btn btn-primary me-3" href='../views/inscription.php'>
+        <a type="button" class="btn btn-primary me-3" href='./views/inscription.php'>
           Inscription
           </a>
         <a
@@ -55,7 +55,7 @@
           role="button"
           target='_blank'
           ><img 
-          src="../public/img/github.svg" 
+          src="./public/img/github.svg" 
           height="17"
           alt=""
           loading="lazy"
