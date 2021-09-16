@@ -38,42 +38,41 @@ include('./layout/navPrivate.php');
     <?php
         $req=$bdd->prepare("SELECT * FROM php_recap_chan");
         $req->execute();
+
+
+
         foreach ($req as $donnees) {
           echo '<tr>';
           echo '<td>' . $donnees['id']. '</td>';
           echo '<td>' . $donnees['title']. '</td>';
           echo '<td>' . $donnees['created_at']. '</td>';
-          echo '<td>' . "<a class='btn btn-success' v-on:click='join(".$donnees['id'].")'>JOIN</a>". '</td>';
+          echo '<td>' . "<a class='btn btn-success' v-on:click='join(".$donnees['title'].$donnees['id'].")'>JOIN</a>". '</td>';
           echo '</tr>';
         }
     ?>
     </tbody>
   </table>
-  <div>
-  <?php
+  <div v-show="!menuShow">
+    <a v-on:click='backToMenu()' class='btn btn-danger'>Retour</a>
+    <?php
     $req=$bdd->prepare("SELECT * FROM php_recap_post");
     $req->execute();
     foreach ($req as $donnees) {
-      echo '<tr>';
-      echo '<td>' . $donnees['id']. '</td>';
-      echo '<td>' . $donnees['title']. '</td>';
-      echo '<td>' . $donnees['created_at']. '</td>';
-      echo '<td>' . "<a class='btn btn-success' v-on:click='join(".$donnees['id'].")'>JOIN</a>". '</td>';
-      echo '</tr>';
+      echo '<div class="card">';
+      echo '<div class="card-header">';
+      echo $donnees['chan_id'];
+      echo '</div>';
+      echo '<div class="card-body">';
+      echo '<h5 class="card-title">'.$donnees['user_id'].'</h5>';
+      echo '<p class="card-text">'.$donnees['message'].'</p><br/>';
+      echo '<p class="card-text">'.$donnees['created_at'].'</p>';
+      // echo '<a href="#" class="btn btn-primary">Go somewhere</a>';
+      echo '</div>';
+      echo '</div>';
     }
     ?>
   </div>
 
-  <div class="card">
-    <div class="card-header">
-      Featured
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
 
 
 

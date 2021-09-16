@@ -9,10 +9,13 @@ Vue.createApp({
     }
   },
   methods: {
-    join (id) {
-      console.log('join'+id);
+    join (chan,id) {
+      console.log('join '+chan+' '+id);
       console.log(this.menuShow);
       this.menuShow=false;
-    }
+    },
+    backToMenu () {
+      this.menuShow=true;
+    },
   }
 }).mount('#app')
