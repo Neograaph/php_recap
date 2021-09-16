@@ -1,5 +1,5 @@
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container d-flex flex-column align-items-center pt-5 gap-5">
     <h1 class="display-4">Bienvenue sur le site</h1>
     <p>Vous pouvez vous inscrire ou vous connecter avec les bouttons ci-dessous</p>
     <div class='d-flex justify-content-center gap-2'>
