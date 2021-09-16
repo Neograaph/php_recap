@@ -1,6 +1,9 @@
 <?php
 include('./views/layout/head.php');
 ?>
+<?php
+include('./views/layout/nav.php');
+?>
 <section>
   <div class='d-flex flex-column align-items-center'>
     <h1>Bienvenue sur le site</h1>

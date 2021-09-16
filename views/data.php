@@ -23,7 +23,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp'])){
       die('Erreur : ' . $e->getMessage());
     }
     
-    $req=$bdd->prepare("SELECT pseudo,mdp FROM php_recap WHERE pseudo= ?");
+    $req=$bdd->prepare("SELECT pseudo,mdp FROM php_recap_user WHERE pseudo= ?");
     $req->execute(array($pseudo));
 
     foreach ($req as $data){

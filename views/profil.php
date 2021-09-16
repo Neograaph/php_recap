@@ -20,7 +20,7 @@ include('./layout/head.php');
   catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
   } 
-  $req=$bdd->prepare("SELECT*FROM php_recap WHERE pseudo= ? ");
+  $req=$bdd->prepare("SELECT*FROM php_recap_user WHERE pseudo= ? ");
   $req->execute(array ($pseudo)); 
   foreach ($req as $data){
     echo 'Id du compte : '.$data['id'].'<br/>';
