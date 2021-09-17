@@ -23,7 +23,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp'])){
       die('Erreur : ' . $e->getMessage());
     }
     
-    $req=$bdd->prepare("SELECT pseudo,mdp FROM php_recap_user WHERE pseudo= ?");
+    $req=$bdd->prepare("SELECT * FROM php_recap_user WHERE pseudo= ?");
     $req->execute(array($pseudo));
 
     foreach ($req as $data){
@@ -32,6 +32,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp'])){
 
     $goodPassword=$data['mdp'];
     if ($goodPassword==$mdp){
+      $_SESSION['id'] = $data['id'];
       $_SESSION['pseudo'] = $pseudo;
       header('location:profil.php');
     }

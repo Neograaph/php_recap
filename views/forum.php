@@ -1,7 +1,7 @@
 <?php
 session_start();
 $pseudo = $_SESSION['pseudo'];
-
+$id_user = $_SESSION['id'];
 $servername = "maximefneograph.mysql.db";
 $username = "maximefneograph";
 $password = "6WtuCxrP7ygy";
@@ -38,7 +38,7 @@ include('./layout/navPrivate.php');
     <?php
         $req=$bdd->prepare("SELECT * FROM php_recap_chan");
         $req->execute();
-
+        $_SESSION['id'] = $data['id'];
         foreach ($req as $donnees) {
           // ajouter ces données dans un tableau pour les récup en JS
           echo '<tr>';
@@ -62,7 +62,7 @@ include('./layout/navPrivate.php');
       echo '{{ "Salon #"+salonJoinId }}';
       echo '</div>';
       echo '<div class="card-body">';
-      echo '<h5 class="card-title">Pseudo : '.$donnees['pseudo'].'</h5>';
+      echo '<h5 class="card-title">Par : '.$donnees['pseudo'].'</h5>';
       echo '<p class="card-text">'.$donnees['message'].'</p><br/>';
       echo '<p class="card-text">Date du message: '.$donnees['created_at'].'</p>';
       echo '</div>';
@@ -80,6 +80,9 @@ include('./layout/navPrivate.php');
       </div>
       <textarea rows="4" cols="50" form="usrform" name='message' placeholder='Votre message...'></textarea>
       <form class='d-flex gap-2' id='usrform' action='./forum.php' method='post'>
+        <input type="text" type="hidden" name='user_id' value='<?php //$id_user ?>'>
+        <input type="text" display="hidden" name='chan_id' v-model='salonJoinId'>
+        <input type="text" type="hidden" name='created_at' @onload='getDateNow'>
         <input class='btn btn-success' type="submit" value='Envoyer'>
         <input @click='cancelReply' class='btn btn-danger' type="button" value='Annuler'>
       </form>
