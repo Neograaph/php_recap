@@ -54,7 +54,7 @@ include('./layout/navPrivate.php');
   </table>
   <div v-show="!menuShow">
     <?php
-    $req=$bdd->prepare("SELECT * FROM php_recap_post");
+    $req=$bdd->prepare("SELECT * FROM php_recap_post p LEFT JOIN php_recap_user u ON p.user_id=u.id");
     $req->execute();
     foreach ($req as $donnees) {
       echo '<div class="card">';
@@ -62,7 +62,7 @@ include('./layout/navPrivate.php');
       echo '{{ "Salon #"+salonJoinId }}';
       echo '</div>';
       echo '<div class="card-body">';
-      echo '<h5 class="card-title">Id utilisateur : '.$donnees['user_id'].'</h5>';
+      echo '<h5 class="card-title">Pseudo : '.$donnees['pseudo'].'</h5>';
       echo '<p class="card-text">'.$donnees['message'].'</p><br/>';
       echo '<p class="card-text">Date du message: '.$donnees['created_at'].'</p>';
       echo '</div>';
